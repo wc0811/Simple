@@ -1,6 +1,19 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
+}
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "https://github.com/wc0811/Simple"
+                artifactId = "ToastUtil"
+                version = "1.0.0"
+            }
+        }
+    }
 }
 
 android {
