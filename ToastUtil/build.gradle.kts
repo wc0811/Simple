@@ -1,20 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-//    id("maven-publish")
+    id("maven-publish")
 }
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            create<MavenPublication>("release") {
-//                from(components["release"])
-//                groupId = "https://github.com/wc0811/Simple"
-//                artifactId = "ToastUtil"
-//                version = "1.0.0"
-//            }
-//        }
-//    }
-//}
+
 
 android {
     namespace = "com.yp.toastutil"
@@ -44,7 +33,19 @@ android {
         jvmTarget = "17"
     }
 }
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "https://github.com/wc0811/Simple"
+            artifactId = "ToastUtil"
+            version = "1.0"
 
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}
 dependencies {
 
     implementation(libs.androidx.core.ktx)
