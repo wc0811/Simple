@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("maven-publish")
+    `maven-publish`
 }
 
-group = "https://github.com/wc0811"
-version = "2.2"
+
 android {
     namespace = "com.yp.toastutil"
     compileSdk = 34
@@ -43,4 +42,16 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.wc0811"
+            artifactId = "Simple"
+            version = "1.0"
 
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}
