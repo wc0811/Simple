@@ -4,7 +4,8 @@ plugins {
     id("maven-publish")
 }
 
-
+group = "https://github.com/wc0811"
+version = "2.2"
 android {
     namespace = "com.yp.toastutil"
     compileSdk = 34
@@ -20,8 +21,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -33,19 +33,7 @@ android {
         jvmTarget = "17"
     }
 }
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "https://github.com/wc0811/Simple"
-            artifactId = "ToastUtil"
-            version = "1.0"
 
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-}
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -55,3 +43,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
