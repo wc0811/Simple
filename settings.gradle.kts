@@ -19,6 +19,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Simple"
 include(":app")
-include(":ToastUtil")
